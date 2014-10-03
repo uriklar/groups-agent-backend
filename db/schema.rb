@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141003151846) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.integer  "facebook_id", limit: 8
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20141003151846) do
     t.integer "request_id"
   end
 
-  add_index "groups_requests", ["group_id", "request_id"], name: "index_groups_requests_on_group_id_and_request_id"
-  add_index "groups_requests", ["request_id"], name: "index_groups_requests_on_request_id"
+  add_index "groups_requests", ["group_id", "request_id"], name: "index_groups_requests_on_group_id_and_request_id", using: :btree
+  add_index "groups_requests", ["request_id"], name: "index_groups_requests_on_request_id", using: :btree
 
   create_table "keywords", force: true do |t|
     t.string   "name"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 20141003151846) do
     t.integer "request_id"
   end
 
-  add_index "keywords_requests", ["keyword_id", "request_id"], name: "index_keywords_requests_on_keyword_id_and_request_id"
-  add_index "keywords_requests", ["request_id"], name: "index_keywords_requests_on_request_id"
+  add_index "keywords_requests", ["keyword_id", "request_id"], name: "index_keywords_requests_on_keyword_id_and_request_id", using: :btree
+  add_index "keywords_requests", ["request_id"], name: "index_keywords_requests_on_request_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "url"
