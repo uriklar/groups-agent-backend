@@ -6,7 +6,7 @@
   <body>
     <h3>List of relevant posts from today:</h3>
     <ul>
-      <% @results.each do |result| %>
+      <% @results.todays.each do |result| %>
         <li>
           <%= link_to result.post.facebook_id, result.post.url %>
         </li>

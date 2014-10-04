@@ -11,6 +11,7 @@ gem 'koala'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'activerecord-postgresql-adapter'
+gem 'figaro'
 
 group :development, :test do
 	gem 'byebug'

@@ -38,8 +38,10 @@ class RequestsController < ApplicationController
       end
     end
 
-    user = User.find_by_auth_token(params[:user][:authToken]) || User.create(auth_token: params[:user][:authToken],email: params[:user][:email])
-
+    oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"])
+    long_token = oauth.exchange_access_token_info(params[:user][:authToken])["access_token"]
+    user = User.find_by_email(params[:user][:email]) || User.create(email: params[:user][:email])
+    user.update_attributes(auth_token: long_token)
     
     r = user.requests.create
     r.groups << groups
