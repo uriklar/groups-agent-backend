@@ -12,7 +12,7 @@ gem 'koala'
 gem 'pg'
 gem 'activerecord-postgresql-adapter'
 gem 'figaro'
-gem 'newrelic_rpm'
+
 
 group :development, :test do
 	gem 'byebug'
