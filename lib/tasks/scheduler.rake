@@ -1,8 +1,10 @@
 desc "TODO"
 task :daily_digest => :environment do
 	Group.all.each do |group|
-		facebook(group.auth_token)
-		find_posts_and_create_results(group)	
+		unless group.requests.empty?
+			facebook(group.auth_token)
+			find_posts_and_create_results(group)
+		end
 	end
 
 	User.with_results.each do |user|
