@@ -4,7 +4,7 @@ GroupsAgentBackend::Application.routes.draw do
   #post 'requests', to: 'requests#create', via: [:options]
   resources :requests, :defaults => {format: :json}
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'requests#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
