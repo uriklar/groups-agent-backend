@@ -11,7 +11,7 @@ task :daily_digest => :environment do
 end
 
 def facebook(token)
-	@facebook ||= Koala::Facebook::API.new(token)
+	@facebook = Koala::Facebook::API.new(token)
 end
 
 def get_feed(group)
